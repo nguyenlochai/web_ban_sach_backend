@@ -45,6 +45,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
         return user;
     }
 
+    // GrantedAuthority đại diện cho quyền của người dùng (các vai trò như "ROLE_ADMIN", "ROLE_USER").
     private Collection<? extends GrantedAuthority> rolesToAuthorities(Collection<Quyen> quyens){
         return quyens.stream().map(quyen-> new SimpleGrantedAuthority(quyen.getTenQuyen())).collect(Collectors.toList());
     }

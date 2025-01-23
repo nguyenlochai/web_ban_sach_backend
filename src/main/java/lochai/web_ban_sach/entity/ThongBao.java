@@ -1,7 +1,7 @@
 package lochai.web_ban_sach.entity;
 
 
-public class ThongBao {
+public class ThongBao extends Throwable {
 
     private String noiDung;
 

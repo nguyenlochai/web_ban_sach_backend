@@ -43,6 +43,16 @@ public class NguoiDung {
     @Column(name = "dia_chi_giao_hang")
     private String diaChiGiaoHang;
 
+    @Column(name = "da_kich_hoat")
+    private Boolean daKichHoat;
+
+    @Column(name = "ma_kich_hoat")
+    private String maKichHoat;
+
+    @Column(name = "avatar", columnDefinition = "LONGTEXT")
+    @Lob
+    private String avatar;
+
     @OneToMany(mappedBy = "nguoiDung", fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH

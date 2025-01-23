@@ -60,9 +60,23 @@ public class Sach {
     @OneToMany(mappedBy = "sach", fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH
-    })
+    }, orphanRemoval = true) //  Xóa con từ danh sách của cha, con sẽ bị xóa khỏi cơ sở dữ liệu mà không cần xóa cha.
     List<ChiTietDonHang> danhSachChiTietDonHang;
 
     @OneToMany(mappedBy = "sach", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<SachYeuThich> danhSachSachYeuThich;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH
+    })
+    @JoinTable(
+            name = "sach_cart",
+            joinColumns = @JoinColumn(name="ma_sach"),
+            inverseJoinColumns = @JoinColumn(name = "ma_cart")
+    )
+
+    List<Cart> danhSachCart;
+
+    
 }
